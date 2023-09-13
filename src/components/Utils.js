@@ -15,6 +15,7 @@ const Utils = () => {
   }, []);
   */
 
+  /*
   function getData() {
     fetch("https://jsonplaceholder.typicode.com/posts", { method: "GET" })
       .then((res) => res.json())
@@ -22,10 +23,23 @@ const Utils = () => {
         setPosts(data);
       });
   }
+  */
+
+  var getData = (url) => {
+    fetch(url, { method: "GET" })
+      .then((res) => res.json())
+      .then((data) => {
+        setPosts(data);
+      });
+  };
 
   return (
     <div>
-      <button onClick={() => getData()}>API</button>
+      <button
+        onClick={() => getData("https://jsonplaceholder.typicode.com/posts")}
+      >
+        API
+      </button>
       <ul>
         {posts.map((post) => (
           <li key={post.id}>{post.title}</li>
